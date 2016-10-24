@@ -1,16 +1,17 @@
-Arquivos de configuração essenciais
+#Arquivos de configuração essenciais
  
-GIT
-	Path: ~/.gitconfig
+##GIT
+	* Path: ~/.gitconfig
 
-Terminator
-	Path: ~/.config/terminator/config
+##Terminator
+	* Path: ~/.config/terminator/config
 
-Tmux
-	Path: ~/.tmux/.tmux.conf
-	`ln -s ~/.tmux/.tmux.conf ~/.tmux.conf`
+##Tmux
+	* Path: ~/.tmux/.tmux.conf
+	* `ln -s ~/.tmux/.tmux.conf ~/.tmux.conf`
 	
-Vim
+##Vim
+	* Path: ~/.vim/vimrc
 
 # TODO:
 	- Criar script de instalação para os arquivos;

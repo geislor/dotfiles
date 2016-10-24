@@ -1,0 +1,135 @@
+source /etc/vimrc
+
+" ---------------------------------- "
+" Atalhos
+" ---------------------------------- "
+
+" Interface with system clipboard
+noremap <Leader>y "*y
+noremap <Leader>p "*p
+noremap <Leader>Y "+y
+noremap <Leader>P "+p
+
+"Undo
+nmap <c-z> :undo<CR>
+imap <c-z> <Esc>:undo<CR>
+
+"F12
+nmap <silent> <F12> :CtrlP<CR>
+imap <F12> <Esc>:CtrlP<CR>
+nmap <C-F12> :CtrlP<CR>
+imap <C-F12> <Esc>:CtrlP<CR>
+
+"F8
+nmap <F8> :TagbarToggle<CR>
+imap <F8> <Esc>:TagbarToggle<CR>
+
+"F6
+nmap <F6> :split<CR>
+imap <F6> <Esc>:split<CR>
+
+"F5
+nmap <F5> :vsplit<CR>
+imap <F5> <Esc>:vsplit<CR>
+
+"F4
+nmap <F4> :YcmCompleter GoTo<CR>
+imap <F4> <Esc> :YcmCompleter GoTo<CR>
+
+"F3
+nmap <F3> :TlistToggle<CR>
+imap <F3> <Esc>:TlistToggle<CR>
+
+"F2
+nmap <F2> :NERDTreeToggle<CR>
+imap <F2> <Esc>:NERDTreeToggle<CR>
+
+" ---------------------------------- "
+"  Common
+" ---------------------------------- "
+
+set tags=tags;$HOME/.vim/tags/ "recursively searches directory for 'tags' file
+set expandtab       " tabs are converted to spac
+set tabstop=4       " numbers of spaces of tab character
+set shiftwidth=4    " numbers of spaces to (auto)indent
+set showcmd         " display incomplete commands
+set hlsearch        " highlight searches
+set incsearch       " do incremental searching
+set ruler           " show the cursor position all the time
+set numberwidth=4   " line numbering takes up 5 spaces
+set ignorecase      " ignore case when searching
+set nowrap          " stop lines from wrapping
+set clipboard=unnamedplus " enable clipboard
+
+set laststatus=2
+filetype plugin indent on
+syntax on
+set backspace=indent,eol,start
+set mouse=a
+
+" Encoding
+set encoding=utf-8
+set fileencoding=utf-8
+
+" Python shiftwidth, tabstop, softtabstop
+autocmd FileType python set sw=4 
+autocmd FileType python set ts=4 
+autocmd FileType python set sts=4
+
+" Show linenumbers
+set number
+
+" set mapleader to a easier typable key
+let mapleader = ","
+
+" Disable autocomment
+:set paste
+
+" ---------------------------------- " 
+" Configure Ultisnip and YouCompleteMe 
+" ---------------------------------- " 
+let g:UltiSnipsExpandTrigger="<tab>" 
+let g:UltiSnipsJumpForwardTrigger="<tab>" 
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+" ---------------------------------- " 
+" Configure YouCompleteMe 
+" ---------------------------------- " 
+
+let g:ycm_collect_identifiers_from_tags_files = 1 " Let YCM read tags from Ctags file 
+let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure 
+let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword 
+let g:ycm_complete_in_comments = 1 " Completion in comments 
+let g:ycm_complete_in_strings = 1 " Completion in string 
+let g:ycm_key_list_select_completion = ['<C-j>', '<Down>'] 
+let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
+
+" ---------------------------------- " 
+" Configure NERDTree 
+" ---------------------------------- " 
+
+" Open NERDTree when Vim startsup and no files were specified 
+autocmd StdinReadPre * let s:std_in=1 
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif 
+
+" Open NERDTree with Ctrl-n 
+map <C-n> :NERDTreeToggle<CR> 
+
+" Close Vim if the only window left open is NERDTree 
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+" ---------------------------------- "
+" Color Scheme
+" ---------------------------------- "
+colorscheme apprentice 
+if &term =~ '256color'
+	" disable Background Color Erase (BCE)
+	set t_ut=
+endif
+
+if exists('+colorcolumn')
+	set colorcolumn=80
+	highlight ColorColumn ctermbg=246 guibg=#c0c0c0
+else
+	au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+endif
