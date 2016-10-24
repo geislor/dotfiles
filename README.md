@@ -1,7 +1,11 @@
 = Arquivos de configuração essenciais: = 
 	- GIT;
+		Path: ~/.gitconfig
 	- Terminator;
-	- Tmux;
+		Path: ~/.config/terminator/config
+	- Tmux:
+		Path: ~/.tmux/.tmux.conf
+			`ln -s ~/.tmux/.tmux.conf ~/.tmux.conf`
 	- Vim;
 
 # TODO:
