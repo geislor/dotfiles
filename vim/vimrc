@@ -133,3 +133,10 @@ if exists('+colorcolumn')
 else
 	au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 endif
+
+" ---------------------------------- "
+" Airline
+" ---------------------------------- "
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':.'
+let g:airline#extensions#tabline#fnamecollapse = 0
